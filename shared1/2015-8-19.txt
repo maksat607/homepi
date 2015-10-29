@@ -1,0 +1,17 @@
+[21:46]  Temp=28.9*C  Humidity=45.3%
+[21:46]  Temp=28.9*C  Humidity=45.3%
+[21:46]  Temp=28.9*C  Humidity=45.4%
+[21:46]  Temp=28.9*C  Humidity=45.4%
+[21:46]  Temp=28.9*C  Humidity=45.5%
+[21:46]  Temp=28.9*C  Humidity=45.5%
+[21:46]  Temp=28.9*C  Humidity=45.5%
+[21:46]  Temp=28.9*C  Humidity=45.4%
+[21:46]  Temp=28.9*C  Humidity=45.2%
+[21:46]  Temp=28.9*C  Humidity=45.2%
+[21:46]  Temp=28.9*C  Humidity=45.2%
+[21:46]  Temp=28.9*C  Humidity=45.2%
+[21:46]  Temp=28.9*C  Humidity=45.2%
+[21:46]  Temp=28.9*C  Humidity=45.2%
+[21:46]  Temp=28.9*C  Humidity=45.2%
+[21:47]  Temp=28.8*C  Humidity=45.3%
+[21:47]  Temp=28.9*C  Humidity=45.3%

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)http://theurbanpenguin.com/wp/index.php/setting-up-a-samba-server-on-raspberry-pi/ -->
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/style.css">
+<link rel="pingback" href="http://theurbanpenguin.com/wp/xmlrpc.php">
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin</title>
+<link rel="canonical" href="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin">
+<meta property="og:description" content="You may be looking a NAS, Network Attached Storage, for your home network. You may find that the Raspberry Pi provides a more than adequate solution with external storage. The Raspberry Pi is very quiet with no fans and takes … Continue reading →">
+<meta property="og:url" content="http://theurbanpenguin.com/wp/index.php/setting-up-a-samba-server-on-raspberry-pi/">
+<meta property="og:site_name" content="theurbanpenguin">
+<meta property="article:publisher" content="http://facebook.com/Theurbanpenguin">
+<meta property="article:section" content="Raspberry Pi">
+<meta property="article:published_time" content="2013-11-26T18:14:06+00:00">
+<meta property="article:modified_time" content="2013-11-26T18:18:29+00:00">
+<meta property="og:updated_time" content="2013-11-26T18:18:29+00:00">
+<meta property="og:image" content="http://theurbanpenguin.com/wp/wp-content/uploads/2013/11/apt-get-300x45.png">
+<meta property="og:image" content="http://theurbanpenguin.com/wp/wp-content/uploads/2013/11/backup.png">
+<meta property="og:image" content="http://theurbanpenguin.com/wp/wp-content/uploads/2013/11/pdbedit.png">
+<meta property="og:image" content="http://theurbanpenguin.com/wp/wp-content/uploads/2013/11/shares-300x123.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="You may be looking a NAS, Network Attached Storage, for your home network. You may find that the Raspberry Pi provides a more than adequate solution with external storage. The Raspberry Pi is very quiet with no fans and takes … Continue reading →">
+<meta name="twitter:title" content="Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin">
+<meta name="twitter:site" content="@theurbanpenguin">
+<meta name="twitter:domain" content="theurbanpenguin">
+<meta name="twitter:image:src" content="http://theurbanpenguin.com/wp/wp-content/uploads/2013/11/apt-get-300x45.png">
+<meta name="twitter:creator" content="@theurbanpenguin">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="theurbanpenguin » Feed" href="http://theurbanpenguin.com/wp/index.php/feed/">
+<link rel="alternate" type="application/rss+xml" title="theurbanpenguin » Comments Feed" href="http://theurbanpenguin.com/wp/index.php/comments/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://theurbanpenguin.com/wp/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://theurbanpenguin.com/wp/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.9.1">
+<link rel="shortlink" href="http://theurbanpenguin.com/wp/?p=2415">
+</head>
+
+<body class="single single-post postid-2415 single-format-standard custom-background">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="http://theurbanpenguin.com/wp/" title="theurbanpenguin" rel="home">theurbanpenguin</a>
+					</span>
+				</div>
+				<div id="site-description">Video and Online learning</div>
+
+										<img src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/cropped-andrew-wordpress1.jpg" width="940" height="197" alt="">
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="http://theurbanpenguin.com/wp/index.php/setting-up-a-samba-server-on-raspberry-pi/#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul><li><a href="http://theurbanpenguin.com/wp/">Home</a></li><li class="page_item page-item-719"><a href="http://theurbanpenguin.com/wp/index.php/about/">About TheUrbanPenguin</a></li><li class="page_item page-item-201"><a href="http://theurbanpenguin.com/wp/index.php/books-by-the-penguin/">Books By the Penguin</a></li><li class="page_item page-item-865"><a href="http://theurbanpenguin.com/wp/index.php/instructor-led-training/">Live and Pluralsight hosted courses</a></li></ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://theurbanpenguin.com/wp/index.php/raspberry-pi-changing-the-default-users-password-and-creating-addtional-accounts/" rel="prev"><span class="meta-nav">←</span> Raspberry Pi : Changing the default users password and creating addtional accounts</a></div>
+					<div class="nav-next"><a href="http://theurbanpenguin.com/wp/index.php/adding-external-storage-to-your-raspberry-pi/" rel="next">Adding external storage to your Raspberry Pi <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-2415" class="post-2415 post type-post status-publish format-standard hentry category-raspberry-pi category-samba">
+					<h1 class="entry-title">Setting up a SAMBA Server on Raspberry Pi</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin.html" title="6:14 pm" rel="bookmark"><span class="entry-date">November 26, 2013</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="http://theurbanpenguin.com/wp/index.php/author/admin/" title="View all posts by admin">admin</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<div style="display: block; float: right; margin: 5px 5px 5px 5px;"><script async="" type="text/javascript" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/ca-pub-0121019553323993.js"></script><script type="text/javascript">// <![CDATA[
+google_ad_client = "ca-pub-0121019553323993"; /* wordpress */ google_ad_slot = "2959176595"; google_ad_width = 300; google_ad_height = 250;
+// ]]&gt;</script><br>
+<script type="text/javascript" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/show_ads.js">// <![CDATA[</p>
+<p>// ]]&gt;</script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+<p>You may be looking a NAS, Network Attached Storage, for your home network. You may find that the Raspberry Pi provides a more than adequate solution with external storage. The Raspberry Pi is very quiet with no fans and takes little power to run, so is not going to break the ecological for monetary banks. Using external drives to act as the storage the samba server will provide file and printer services to Windows clients on the network</p>
+<div>
+<h2>Installing Samba</h2>
+</div>
+<p>As with many of these tutorials the examples provided will start with an install. At this stage it is also worth to note that it is advisable to update the application cache on the device before we try to install so that we are looking at the latest version available</p>
+<p><strong>sudo apt-get update<br>
+sudo apt-get install samba samba-common-bin</strong></p>
+<p><a href="http://theurbanpenguin.com/wp/wp-content/uploads/2013/11/apt-get.png"><img class="alignnone size-medium wp-image-2417" title="apt-get" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/apt-get-300x45.png" alt="" width="300" height="45"></a></p>
+<p>From the above commands you can see that we first run the update and then we install 2 packages, samba and samba-common-bin. We will see later that the common-bin package is required if we would like to use <strong>testparm</strong>(/usr/bin/testparm) to verify samba configuration before a restart.</p>
+<div>
+<h2>Creating a directory to share</h2>
+</div>
+<p>The directory that we will share out will act as a mount point for external storage. So we will need to create the directory and set appropriate permissions to the directory. Using <strong>mkdir</strong>(/bin/mkdir) we can both create the directory and set the permissions in the one command. The <strong>-m</strong> option will allow you to set the <strong>mode</strong> or permissions of the directory.</p>
+<p><strong>sudo mkdir -m 1777 /data</strong></p>
+<p>From the above command we can see the easy part, creating the directory /data. As it is at the root of the file-system we will need administrative permissions to do this so we run it prefaced with the sudo command. &nbsp;The mode of the directory is set with the -m option:</p>
+<ul>
+<li>1: sets the sticky bit. This set on a directory ensures that users can only delete files they own.</li>
+<li>7: sets RWX read , write and execute for the user owner</li>
+<li>7: sets RWX read , write and execute for the group owner</li>
+<li>7: sets RWX read , write and execute for others</li>
+</ul>
+<p>This directory will be empty at the moment and, of course, the root file-system is limited in size on the Pi to that available from the SD cards. We can use an external drive connected to the USB ports and have this mounted to the /data directory. This then can provide effective storage for your network</p>
+<h2>Edit the Samba Configuration, smb.conf</h2>
+<p>With samba installed we can edit the configuration to allow us to share out the directory /data. The location for the file is <strong>/etc/samba/smb.conf</strong>. The default file is, shall we say well documented. This makes for a fairly bulky file that is not the easiest to navigate. You can expect 300 lines in this file with 90% being documentation. I would suggest renaming this file and to copy only the active configuration back.</p>
+<p><strong>sudo mv /etc/samba/smb.conf /etc/samba/smb.conf/$(date +%F)</strong></p>
+<p>The above command is a rather neat way to give a sate based extension to a file. The resulting file will look like this:</p>
+<p><a href="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/backup.png"><img class="alignnone size-full wp-image-2419" title="backup" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/backup.png" alt="" width="547" height="85"></a></p>
+<p>Now we may as well make life a little easier for us and start up a root shell as many commands will need rights.</p>
+<p><strong>sudo bash</strong></p>
+<p>Now at the root prompt, and in the <strong>/etc/samba</strong> directory, we can filter the contents of the backup file back into the smb.conf. we can use <strong>grep</strong>(/bin/grep) for this.</p>
+<p><strong>grep -ve ^# -ve ‘^;’ -ve ^$ smb.conf.2103-11-26&nbsp;&nbsp; &gt;&nbsp; smb.conf</strong></p>
+<p>The command may look a little messy but is really useful to us.</p>
+<ul>
+<li>-ve ^# : First we remove lines that start with a #</li>
+<li>-ve ‘^;’ : The we do the same for lines beginning with ; Note the quotes here as the ; has other meanings so we escape the semi-colon in the quotes</li>
+<li>-ve ^$ : Finally we remove empty lines</li>
+<li>&gt; : This is used to redirect the output to the new smb.conf.</li>
+</ul>
+<p>We go from 333 lines in the original file to 34 lines in the new file. This way, the result is quick and we have not lost out documentation.</p>
+<div>
+<h2>Adding a share definition</h2>
+</div>
+<p>We can now edit <strong>the /etc/samba/smb.conf</strong> and add in the /data directory that we wish to share.</p>
+<p><strong>[data]</strong></p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; comment = Data share</strong></p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; path = /data</strong></p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; browseable = yes</strong></p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read only = no</strong></p>
+<p>The share definitions are towards the end of the file and we can add this at the end. Just make sure it is after the last line of any other share definition.</p>
+<div>
+<h2>Restarting Samba</h2>
+</div>
+<p>Once we have saved the file we should test the configuration using <strong>testparm</strong>(/usr/bin/testparm). This was added with the package, <strong>samba-common-bin</strong>.</p>
+<p><strong>testparm</strong></p>
+<p>This checks the samba configuration file. If not errors are reported we can then restart the server.</p>
+<p><strong>service samba restart</strong></p>
+<p>This will restart both the <strong>smbd</strong> and <strong>nmbd</strong>. The samba server and netbios name server.</p>
+<div>
+<h2>Creating samba users</h2>
+</div>
+<p>The last part of this tutorial will involve us creating samba users. These users must represent Linux users but their password can and should be different to the Linux password for security. This is not enforced though. Using the command <strong>smbpasswd</strong>(/usr/bin/smbpasswd) as the root user we can add new samba users. A user must have a password in samba to access shares.</p>
+<p><strong>smbpasswd -a root<br>
+smbpasswd -a pi</strong></p>
+<p>The above commands add root and pi as samba users. By default a TDB database is used to store this information. You can list current samba users with the command <strong>pdbedit</strong>(/usr/bin/pdbedit).</p>
+<p><strong>pdbedit -L</strong></p>
+<p>Running the above command on my system lists the three users I have added as samba accounts.</p>
+<p><a href="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/pdbedit.png"><img class="alignnone size-full wp-image-2421" title="pdbedit" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/pdbedit.png" alt="" width="375" height="97"></a></p>
+<div>
+<h2>Testing the connection with smbclient</h2>
+</div>
+<p>We can now simply test the process, even from Linux on our Pi. Using the command <strong>smbclient</strong>(/usr/bin/smbclient) we can list shares on a server or even connect.</p>
+<p><strong>smbclient -L localhost</strong></p>
+<p>The command lists shares from the localhost, as we can see from the following screenshot.</p>
+<p><a href="http://theurbanpenguin.com/wp/wp-content/uploads/2013/11/shares.png"><img class="alignnone size-medium wp-image-2423" title="shares" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/shares-300x123.png" alt="" width="300" height="123"></a></p>
+<p>The video for this demonstration can be viewed on YouTube. <a href="http://theurbanpenguin.com/pdf/samba.pdf" target="_blank">The PDF can be downloaded from here</a></p>
+<p><script type="text/javascript">// <![CDATA[
+google_ad_client = "ca-pub-0121019553323993"; /* header */ google_ad_slot = "1962870508"; google_ad_width = 728; google_ad_height = 90;
+// ]]&gt;</script><br>
+<script type="text/javascript" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/show_ads.js">// <![CDATA[</p>
+<p>// ]]&gt;</script><ins id="aswift_1_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins><br>
+<object width="560" height="315" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><param name="src" value="//www.youtube.com/v/aE6EwJFdHVU?hl=en_GB&amp;version=3"><param name="allowfullscreen" value="true"><embed width="560" height="315" type="application/x-shockwave-flash" src="//www.youtube.com/v/aE6EwJFdHVU?hl=en_GB&amp;version=3" allowfullscreen="true" allowscriptaccess="always"></object></p>
+											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="http://theurbanpenguin.com/wp/index.php/linux/raspberry-pi/" title="View all posts in Raspberry Pi" rel="category tag">Raspberry Pi</a>, <a href="http://theurbanpenguin.com/wp/index.php/linux/samba/" title="View all posts in SAMBA" rel="category tag">SAMBA</a>. Bookmark the <a href="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin.html" title="Permalink to Setting up a SAMBA Server on Raspberry Pi" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://theurbanpenguin.com/wp/index.php/raspberry-pi-changing-the-default-users-password-and-creating-addtional-accounts/" rel="prev"><span class="meta-nav">←</span> Raspberry Pi : Changing the default users password and creating addtional accounts</a></div>
+					<div class="nav-next"><a href="http://theurbanpenguin.com/wp/index.php/adding-external-storage-to-your-raspberry-pi/" rel="next">Adding external storage to your Raspberry Pi <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+
+		
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="search-2" class="widget-container widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://theurbanpenguin.com/wp/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://theurbanpenguin.com/wp/index.php/lpic-1-using-the-command-type/">LPIC-1 Using the command type</a>
+						</li>
+					<li>
+				<a href="http://theurbanpenguin.com/wp/index.php/creating-wordpress-site-on-rhel-7-1/">Creating WordPress Site on RHEL 7.1</a>
+						</li>
+					<li>
+				<a href="http://theurbanpenguin.com/wp/index.php/rhce-creating-a-database-in-mariadb-using-rhel-7-1/">RHCE – Creating a New Database in MariaDB</a>
+						</li>
+					<li>
+				<a href="http://theurbanpenguin.com/wp/index.php/rhce-installing-mariadb-on-rhel-7-1/">RHCE – Installing MariaDB on RHEL 7.1</a>
+						</li>
+					<li>
+				<a href="http://theurbanpenguin.com/wp/index.php/lpic-1-fault-finding-with-cat-and-od/">LPIC-1 Fault Finding with cat and od</a>
+						</li>
+				</ul>
+		</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-45"><a href="http://theurbanpenguin.com/wp/index.php/citrix/a19-xendesktop-cca/" title="View all posts filed under A19 XenDesktop CCA">A19 XenDesktop CCA</a>
+</li>
+	<li class="cat-item cat-item-47"><a href="http://theurbanpenguin.com/wp/index.php/citrix/a20-xenapp-cca/" title="View all posts filed under A20 XenApp CCA">A20 XenApp CCA</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://theurbanpenguin.com/wp/index.php/linux/apache/" title="View all posts filed under Apache">Apache</a>
+</li>
+	<li class="cat-item cat-item-51"><a href="http://theurbanpenguin.com/wp/index.php/linux/bashscripting/" title="View all posts filed under Bash Scripting">Bash Scripting</a>
+</li>
+	<li class="cat-item cat-item-53"><a href="http://theurbanpenguin.com/wp/index.php/linux/centos/" title="View all posts filed under CentOS">CentOS</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://theurbanpenguin.com/wp/index.php/citrix/" title="View all posts filed under Citrix">Citrix</a>
+</li>
+	<li class="cat-item cat-item-55"><a href="http://theurbanpenguin.com/wp/index.php/linux/filesystems/" title="View all posts filed under FileSystems">FileSystems</a>
+</li>
+	<li class="cat-item cat-item-57"><a href="http://theurbanpenguin.com/wp/index.php/linux/grub2-linux/" title="View all posts filed under GRUB2">GRUB2</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://theurbanpenguin.com/wp/index.php/linux/iptables/" title="View all posts filed under iptables">iptables</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="http://theurbanpenguin.com/wp/index.php/linux/ipv6/" title="View all posts filed under IPV6">IPV6</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://theurbanpenguin.com/wp/index.php/java/" title="View all posts filed under JAVA">JAVA</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://theurbanpenguin.com/wp/index.php/linux/" title="Linux Postings and musings">Linux</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://theurbanpenguin.com/wp/index.php/linux/lpi-linux-essentials/" title="View all posts filed under LPI Linux Essentials">LPI Linux Essentials</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://theurbanpenguin.com/wp/index.php/linux/lpi-lpic-1-exam-101/" title="View all posts filed under LPIC-1 Exam 101">LPIC-1 Exam 101</a>
+</li>
+	<li class="cat-item cat-item-287"><a href="http://theurbanpenguin.com/wp/index.php/linux/lpic-1-exam-102/" title="View all posts filed under LPIC-1 Exam 102">LPIC-1 Exam 102</a>
+</li>
+	<li class="cat-item cat-item-289"><a href="http://theurbanpenguin.com/wp/index.php/linux/lpic-2-exam-201/" title="View all posts filed under LPIC-2 Exam 201">LPIC-2 Exam 201</a>
+</li>
+	<li class="cat-item cat-item-291"><a href="http://theurbanpenguin.com/wp/index.php/linux/lpic-2-exam-202/" title="View all posts filed under LPIC-2 Exam 202">LPIC-2 Exam 202</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="http://theurbanpenguin.com/wp/index.php/linux/lpic-3-exam-300/" title="View all posts filed under LPIC-3 Exam 300">LPIC-3 Exam 300</a>
+</li>
+	<li class="cat-item cat-item-285"><a href="http://theurbanpenguin.com/wp/index.php/linux/lpic-3-exam-303/" title="View all posts filed under LPIC-3 Exam 303">LPIC-3 Exam 303</a>
+</li>
+	<li class="cat-item cat-item-279"><a href="http://theurbanpenguin.com/wp/index.php/linux/nagios/" title="View all posts filed under nagios">nagios</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://theurbanpenguin.com/wp/index.php/citrix/netscaler/" title="View all posts filed under NetScaler">NetScaler</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://theurbanpenguin.com/wp/index.php/java/oca-java-programmer-1z0-803/" title="View all posts filed under OCA Java Programmer 1Z0-803">OCA Java Programmer 1Z0-803</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://theurbanpenguin.com/wp/index.php/linux/openldap/" title="View all posts filed under openLDAP">openLDAP</a>
+</li>
+	<li class="cat-item cat-item-273"><a href="http://theurbanpenguin.com/wp/index.php/linux/perl-linux/" title="View all posts filed under Perl">Perl</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://theurbanpenguin.com/wp/index.php/linux/php-mysql/" title="View all posts filed under PHP-MySQL">PHP-MySQL</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://theurbanpenguin.com/wp/index.php/powershell/" title="View all posts filed under PowerShell">PowerShell</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://theurbanpenguin.com/wp/index.php/linux/python-3/" title="View all posts filed under Python 3">Python 3</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="http://theurbanpenguin.com/wp/index.php/linux/raspberry-pi/" title="View all posts filed under Raspberry Pi">Raspberry Pi</a>
+</li>
+	<li class="cat-item cat-item-283"><a href="http://theurbanpenguin.com/wp/index.php/linux/red-hat/" title="View all posts filed under Red Hat">Red Hat</a>
+</li>
+	<li class="cat-item cat-item-295"><a href="http://theurbanpenguin.com/wp/index.php/linux/rh124/" title="View all posts filed under RH124">RH124</a>
+</li>
+	<li class="cat-item cat-item-297"><a href="http://theurbanpenguin.com/wp/index.php/linux/rh254/" title="View all posts filed under RH254">RH254</a>
+</li>
+	<li class="cat-item cat-item-275"><a href="http://theurbanpenguin.com/wp/index.php/scripting/ruby/" title="View all posts filed under ruby">ruby</a>
+</li>
+	<li class="cat-item cat-item-277"><a href="http://theurbanpenguin.com/wp/index.php/linux/samba/" title="View all posts filed under SAMBA">SAMBA</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://theurbanpenguin.com/wp/index.php/scripting/" title="View all posts filed under Scripting">Scripting</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://theurbanpenguin.com/wp/index.php/solaris/oca/" title="View all posts filed under Solaris 11 OCA">Solaris 11 OCA</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://theurbanpenguin.com/wp/index.php/linux/squid-linux/" title="View all posts filed under Squid">Squid</a>
+</li>
+	<li class="cat-item cat-item-33"><a href="http://theurbanpenguin.com/wp/index.php/linux/suse-linux/" title="View all posts filed under SUSE">SUSE</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://theurbanpenguin.com/wp/index.php/linux/ubuntu/" title="Howtos and learning Ubuntu Linux">Ubuntu</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://theurbanpenguin.com/wp/index.php/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="http://theurbanpenguin.com/wp/index.php/linux/video-man-pages/" title="View all posts filed under Video Man Pages">Video Man Pages</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://theurbanpenguin.com/wp/index.php/linux/xen/" title="View all posts filed under XEN">XEN</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://theurbanpenguin.com/wp/index.php/citrix/xenapp-65/" title="View all posts filed under XenApp 6.5">XenApp 6.5</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="http://theurbanpenguin.com/wp/index.php/citrix/xenserver/" title="View all posts filed under XenServer">XenServer</a>
+</li>
+		</ul>
+</li><li id="meta-2" class="widget-container widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+						<li><a rel="nofollow" href="http://theurbanpenguin.com/wp/wp-login.php">Log in</a></li>
+			<li><a href="http://theurbanpenguin.com/wp/index.php/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://theurbanpenguin.com/wp/index.php/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+				<a href="http://theurbanpenguin.com/wp/" title="theurbanpenguin" rel="home">
+					theurbanpenguin				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+<script type="text/javascript" src="./Setting up a SAMBA Server on Raspberry Pi - theurbanpenguin_files/comment-reply.min.js"></script>
+
+
+</body></html>
