@@ -1,0 +1,172 @@
+q
+select from temperature
+;
+select*from temperature
+;
+use my_db
+select*from temperature;
+create database dbwordpress
+;
+CREATE USER wpuser@localhost IDENTIFIED BY 'wppassword';
+GRANT ALL PRIVILEGES ON dbwordpress.* TO wpuser@localhost;
+FLUSH PRIVILEGES;
+exit;
+show databases;
+use my_db
+show tables
+;
+show databases
+;
+use my_db
+show tables;
+CREATE TABLE EX(
+id INT DEFAULT 0,
+data VARCHAR(100)
+);
+CREATE TABLE EX( id INT DEFAULT 0, data VARCHAR(100) );
+INSERT INTO EX(data)
+VALUES('maksat'));
+INSERT INTO EX(data) VALUES('maksat'));
+INSERT INTO EX(data) VALUES('maksat');
+select* from EX;
+INSERT INTO EX(data) VALUES('maksat1');
+INSERT INTO EX(data) VALUES('maksat12');
+select* from EX;
+ CREATE TABLE health (
+ id INT AUTO_INCREMENT, 
+ temperature float(3,1) DEFAULT 37,  
+ name VARCHAR(100) DEFAULT 'Maksat Saparbekov',
+ pressure VARCHAR(50),
+ pulse int,
+ date DATETIME DEFAULT (select now()),
+ primary key (id) 
+ );
+CREATE TABLE health (  id INT AUTO_INCREMENT,   temperature float(3,1) DEFAULT 37,    name VARCHAR(100) DEFAULT 'Maksat Saparbekov',  pressure VARCHAR(50),  pulse int,  date DATETIME DEFAULT (select now()),  primary key (id)   );
+CREATE TABLE health (  id INT AUTO_INCREMENT,   temperature float(3,1) DEFAULT 37,    name VARCHAR(100) DEFAULT 'Maksat Saparbekov',  pressure VARCHAR(50),  pulse int,  date DATETIME DEFAULT (now()),  primary key (id)   );
+clear
+show tables
+;
+ CREATE TABLE health (
+ id INT AUTO_INCREMENT, 
+ temperature float(3,1) DEFAULT 37,  
+ name VARCHAR(100) DEFAULT 'Maksat Saparbekov',
+ pressure VARCHAR(50),
+ pulse int,
+ date DATETIME DEFAULT CURRENT_TIMESTAMP,
+ primary key (id) 
+ );
+CREATE TABLE health (  id INT AUTO_INCREMENT,   temperature float(3,1) DEFAULT 37,    name VARCHAR(100) DEFAULT 'Maksat Saparbekov',  pressure VARCHAR(50),  pulse int,  date DATETIME DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+ CREATE TABLE health (
+ id INT AUTO_INCREMENT, 
+ temperature float(3,1) DEFAULT 37,  
+ name VARCHAR(100) DEFAULT 'Maksat Saparbekov',
+ pressure VARCHAR(50),
+ pulse int,
+ date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
+ primary key (id) 
+ );
+CREATE TABLE health (  id INT AUTO_INCREMENT,   temperature float(3,1) DEFAULT 37,    name VARCHAR(100) DEFAULT 'Maksat Saparbekov',  pressure VARCHAR(50),  pulse int,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+show tables
+;
+select *from health
+;
+insert into health(presssure, pulse) values('80 132',60);
+insert into health(pressure, pulse) values('80 132',60);
+select *from health;
+ls
+;
+select *from health;
+delete from health
+where pulse<60 and pulse>65;
+delete from health where pulse<60 and pulse>65;
+select *from health;
+delete from health where pulse<60 and pulse>65;
+delete from health where pulse<60;
+select *from health;
+delete from health where pulse<65&&pulse>70;
+delete from health where pulse>70;
+clear
+clean
+;
+select *from health
+;
+show databases
+;
+use my_db;
+show tables;
+select *from health;
+show databases
+;
+use my_db
+;
+show tables;
+select *from health;
+ CREATE TABLE income (
+ id INT AUTO_INCREMENT, 
+ type VARCHAR(50) DEFAULT ‘cash’,  
+ fare float(5,2) DEFAULT 0,
+ pulse int,
+ date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
+ primary key (id) 
+ );
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT ‘cash’,    fare float(5,2) DEFAULT 0,  pulse int,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+ CREATE TABLE income (
+ id INT AUTO_INCREMENT, 
+ type VARCHAR(50) DEFAULT ‘cash’,  
+ fare float(5,2) DEFAULT 0,
+ date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,
+ primary key (id) 
+ );
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT ‘cash’,    fare float(5,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+show tables;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(5,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+select *from income;
+drop income;
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(5,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(3,1) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(3,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(3,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(7,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(7,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(7,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+select *from income;
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(7,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+use database my_db
+use my_db
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(7,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+drop table income;
+CREATE TABLE income (  id INT AUTO_INCREMENT,   type VARCHAR(50) DEFAULT 'cash',    fare float(7,2) DEFAULT 0,  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+use my_db
+CREATE TABLE note (  id INT AUTO_INCREMENT,   type VARCHAR(250),comment VARCHAR(50),  date TIMESTAMP  DEFAULT CURRENT_TIMESTAMP,  primary key (id)   );
+use my_db
+select *from income wher
+select *from income;
+select *from income wher    select *from income;
+select sum(fare) from income;
+use my_db
+delete from income where id=114
+;
+delete from income where id=115;
+show databases;
+CREATE DATABASE company;
+CREATE TABLE login(
+id int(10) NOT NULL AUTO_INCREMENT,
+username varchar(255) NOT NULL,
+password varchar(255) NOT NULL,
+PRIMARY KEY (id)
+use my_db
+CREATE TABLE login(
+id int(10) NOT NULL AUTO_INCREMENT,
+username varchar(255) NOT NULL,
+password varchar(255) NOT NULL,
+PRIMARY KEY (id)
+);
+CREATE TABLE login( id int(10) NOT NULL AUTO_INCREMENT, username varchar(255) NOT NULL, password varchar(255) NOT NULL, PRIMARY KEY (id) );
+insert into login (username, password) values ('maksat','maksat');

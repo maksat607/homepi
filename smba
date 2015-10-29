@@ -1,0 +1,13 @@
+sudo echo '[global]
+workgroup = WORKGROUP
+security = share
+map to guest = bad user
+[centos32]
+path = /home
+browsable = yes
+writabel = yes
+read only = no
+user = "root"
+force user = root
+guest ok = yes
+public = yes' >/etc/samba/smb.conf

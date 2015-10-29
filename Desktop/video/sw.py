@@ -1,0 +1,1 @@
+import RPi.GPIO as gimport osimport timeg.setmode(g.BOARD)g.setup(11,g.IN,pull_up_down=g.PUD_DOWN)g.setup(37,g.OUT)g.output(37,0)try:	while True:		g.output(37,input(11))except KeyboardInterrupt:	g.cleanup()
